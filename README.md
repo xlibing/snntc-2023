@@ -1,10 +1,12 @@
 # snntc-2023
 spiking neural network with temporal coding: c++/cuda &amp; tensorflow ops
 
-This is the improved soruce code with c++ modules for the paper: 
+This package provides improved source code with c++/cuda modules for the paper: 
+
 S. Zhou, X. Li, Y. Chen, S. Chandrasekaran, and A. Sanyal, 
 "Temporal-coded deep spiking neural network with easy training and robust performance," 
 the Thirty-Fifth AAAI Conference on Artificial Intelligence (AAAI-21), Feb. 2021.
+
 Please cite this paper if you find it this code useful.
 
 SNN-TC (spiking neural network with temporal coding) has special
