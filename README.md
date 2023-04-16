@@ -22,8 +22,9 @@ version uses the same amount of GPU memory as conventional
 CNN but runs at 5 times slower.
 
 We provide mainly the dense and 2D convolutional layers as c++/cuda
-coding. Other layers like pooling are also provided,
-which are implemented by calling python Tensorflow modules directly.
+coding (source codes are snnfc*, and snncv*). 
+Other layers like pooling are also provided, which are implemented
+in SNN_TC_Modules.py by calling python Tensorflow modules directly.
 One can add his own layers via either slight modification of
 Tensorflow or following our c++/cuda programming style.
 
