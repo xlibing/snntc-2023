@@ -34,9 +34,13 @@ GPUs and another computer with a Nvidia 2080ti GPU.
 ## Usage 
 
 Use
-     "from SNN_TC_Modules import SNN_conv, SNN_dense"
+
+     from SNN_TC_Modules import SNN_conv, SNN_dense
+     
 or just
-     "import SNN_TC_Modules"
+
+     import SNN_TC_Modules as SNN
+     
 in your python code, and use the SNN modules in the same way as CNN.
 
 The file "SNN_TC_Modules.py" can be copied to your project folder.
