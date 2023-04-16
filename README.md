@@ -42,6 +42,7 @@ or just
      import SNN_TC_Modules as SNN
      
 in your python code, and use the SNN modules in the same way as CNN.
+See snntc-mnist.py for usage examples.
 
 The file "SNN_TC_Modules.py" can be copied to your project folder.
 There is no need to move any of the rest files. Instead, just change
