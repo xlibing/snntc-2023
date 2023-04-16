@@ -48,10 +48,15 @@ modules *.so are in.
 
 All the *.so modules need to be recompiled when moving to a new computer.
 Run
+
        bash make-snnfc.sh
+       
        bash make-snnfcgrad.sh
+       
        bash make-snncv.sh
+       
        bash make-snncvgrad.sh
+       
 to get the four c++ ops modules: snnfc_ops.so, snnfcgrad_ops.so,
 snncv_ops.so, snncvgrad_ops.so.
 
