@@ -14,14 +14,14 @@ Even a simple CIFAR10 model would exhaust GPU memory.
 
 This package provides c++/cuda implementation of SNN-TC dense and
 and 2-D convolutional layers for the Tensorflow platform. With this,
-large deep models can be implemented without too much GPU memory.
+large deep models can be implemented and trained.
 
 The speed is hurdled mainly by the SORT operation. The current
 version uses the same amount of GPU memory as conventional
 CNN but runs at 5 times slower.
 
-We provide mainly the dense and 2D convolutional layers as c++/cuda
-coding (source codes are snnfc*, and snncv*). 
+We provide the dense and 2D convolutional layers as c++/cuda
+modules (source codes are snnfc* and snncv*, respectively). 
 Other layers like pooling are also provided, which are implemented
 in SNN_TC_Modules.py by calling python Tensorflow modules directly.
 One can add his own layers via either slight modification of
