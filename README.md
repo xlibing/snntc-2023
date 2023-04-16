@@ -1,4 +1,4 @@
-## Spiking Neural Network with Temporal Coding: c++/cuda &amp; tensorflow ops
+# Spiking Neural Network with Temporal Coding: c++/cuda &amp; tensorflow ops
 
 This package provides improved source code with c++/cuda modules for the paper: 
 
