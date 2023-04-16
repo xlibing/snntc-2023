@@ -4,7 +4,7 @@ import tensorflow as tf
 from tensorflow.python.framework import ops
 
 # Please change to the right direction where all the *.so file are in
-C_MODULE_ROOT = './'
+C_MODULE_ROOT = './snntc/'
 
 # change to True if checking tensor dimensions of large models
 # we require every tensor under 2**31, or 2GB, in memory size
