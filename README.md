@@ -18,7 +18,7 @@ and 2-D convolutional layers for the Tensorflow platform. With this,
 large deep models can be implemented without too much GPU memory.
 
 The speed is hurdled mainly by the SORT operation. The current
-version use the same amount of GPU memory as conventional
+version uses the same amount of GPU memory as conventional
 CNN but runs at 5 times slower.
 
 We provide mainly the dense and 2D convolutional layers as c++/cuda
@@ -32,6 +32,7 @@ Tested (and optimized) mainly on a workstation with 4 Nvidia A5000
 GPUs and another computer with a Nvidia 2080ti GPU.
 
 -------------------- Usage -----------------------------------------
+
 Use
      "from SNN_TC_Modules import SNN_conv, SNN_dense"
 or just
@@ -44,6 +45,7 @@ There is no need to move any of the rest files. Instead, just change
 modules *.so are in.
 
 ------------------ C++ Compilation ----------------------------------
+
 All the *.so modules need to be recompiled when moving to a new computer.
 Run
        bash make-snnfc.sh
