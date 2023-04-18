@@ -13,7 +13,7 @@ implement them with just python and tensorflow.
 Even a simple CIFAR10 model would exhaust GPU memory.
 
 This package provides c++/cuda implementation of SNN-TC dense and
-and 2-D convolutional layers for the Tensorflow platform. With this,
+2-D convolutional layers for the Tensorflow platform. With this,
 large deep models can be implemented and trained.
 
 The speed is hurdled mainly by the SORT operation. The current
