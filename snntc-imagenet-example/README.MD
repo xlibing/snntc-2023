@@ -9,5 +9,5 @@ to decompress it before using.
 To try the code, make sure you have downloaded ImageNet dataset, and change the imagenet data folder in config.py to your imagenet data folder.
 Then run
 
-       python snntc-imagent.py
+       python snntc-imagenet.py
 
