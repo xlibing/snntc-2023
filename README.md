@@ -43,6 +43,12 @@ or
      
 in your python code, and use the SNN modules in the same way as CNN.
 See snntc-mnist.py, snntc-cifar10.py, and snntc-imagenet.py for usage examples.
+To try these examples, run
+
+     python snntc-minist.py
+     python snntc-cifar10.py
+     python snntc-imagenet.py
+
 
 The file "SNN_TC_Modules.py" can be copied to your project folder.
 There is no need to move any of the rest files, but you need to change
