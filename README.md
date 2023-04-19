@@ -21,8 +21,8 @@ CNN but run at 5 times slower. It seems that the relatively slow speed is mainly
 We have tried to implement dense and 2D conv ops with more efficient GEMM or more fancy GPU programming techniques, but they do not improve speed.
 
 We provide the dense and 2D convolutional layers as c++/cuda
-modules, whsoe source codes are snnfc*.* and snncv*.*, respectively. 
-Other layers like pooling are also provided, which are implemented
+modules, whose source codes are snnfc*.* and snncv*.*, respectively. 
+Other layers like pooling are also provided, but are implemented
 in SNN_TC_Modules.py by calling python Tensorflow functions directly.
 One can add his own layers via either slight modification of
 Tensorflow or following our c++/cuda programming style.
