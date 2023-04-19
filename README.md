@@ -16,8 +16,8 @@ This package provides c++/cuda implementation of SNN-TC dense and
 2-D convolutional layers for the Tensorflow platform. With this,
 large deep models can be implemented and trained more efficiently.
 
-Models constructed with the SNN-TC modules in general use the same amount of GPU memory as conventional
-CNN but run at 5 times slower. It seems that the relatively slow speed is mainly due to the SORT operation. 
+*Models constructed with the SNN-TC modules in general use the same amount of GPU memory as conventional
+CNN but run at 5 times slower.* It seems that the relatively slow speed is mainly due to the SORT operation. 
 We have tried to implement dense and 2D conv ops with more efficient GEMM or more fancy GPU programming techniques, but they do not improve speed.
 
 We provide the dense and 2D convolutional layers as c++/cuda
