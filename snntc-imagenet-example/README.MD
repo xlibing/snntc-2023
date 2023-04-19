@@ -1,4 +1,4 @@
-This is an example showing how to use SNN-TC to construct and train Imagenet models. 
+This is an example showing how to use SNN-TC to construct and train Imagenet models. We implement GoogleNet here.
 
 Because the train_label.txt file is over the 25MB limit of GitHub, we provide the compressed zip file. Please run
 
