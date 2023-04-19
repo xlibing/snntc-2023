@@ -2,7 +2,7 @@
 
 This package provides improved source code with c++/cuda modules for the paper: 
 
-- S. Zhou, X. Li, Y. Chen, S. Chandrasekaran, and A. Sanyal, "Temporal-coded deep spiking neural network with easy training and robust performance," the Thirty-Fifth AAAI Conference on Artificial Intelligence (AAAI-21), Feb. 2021.
+- *S. Zhou, X. Li, Y. Chen, S. Chandrasekaran, and A. Sanyal, "Temporal-coded deep spiking neural network with easy training and robust performance," the Thirty-Fifth AAAI Conference on Artificial Intelligence (AAAI-21), Feb. 2021.*
 
 Please cite this paper if you find this package useful.
 
