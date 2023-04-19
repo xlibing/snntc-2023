@@ -8,27 +8,28 @@ Please cite this paper if you find this package useful.
 
 *SNN-TC (spiking neural network with temporal coding)* has special
 forward and backward expressions that use SORT operation instead of
-conventional nonlinear activations. It is very inefficient to
-implement them with just python and tensorflow.
-Even a simple CIFAR10 model would exhaust GPU memory.
+conventional nonlinear activations. The major challenge is that it is very inefficient to
+implement them with just python and tensorflow, in terms of both speed and GPU memory. 
+Even a simple CIFAR10 model would exhaust GPU memory if implemented by Tensorflow/Pytorch functions.
 
 This package provides c++/cuda implementation of SNN-TC dense and
 2-D convolutional layers for the Tensorflow platform. With this,
-large deep models can be implemented and trained.
-M
-SNN-TC modules use the same amount of GPU memory as conventional
-CNN but runs at 5 times slower.The speed is hurdled mainly by the SORT operation. 
+large deep models can be implemented and trained more efficiently.
+
+Models constructed with the SNN-TC modules in general use the same amount of GPU memory as conventional
+CNN but run at 5 times slower. It seems that the relatively slow speed is mainly due to the SORT operation. 
+We have tried to implement dense and 2D conv ops with more efficient GEMM or more fancy GPU programming techniques, but they do not improve speed.
 
 We provide the dense and 2D convolutional layers as c++/cuda
-modules (source codes are snnfc* and snncv*, respectively). 
+modules, whsoe source codes are snnfc*.* and snncv*.*, respectively. 
 Other layers like pooling are also provided, which are implemented
-in SNN_TC_Modules.py by calling python Tensorflow modules directly.
+in SNN_TC_Modules.py by calling python Tensorflow functions directly.
 One can add his own layers via either slight modification of
 Tensorflow or following our c++/cuda programming style.
 
 Developed under python 3.9, Tensorflow 2.9, cuda 11.6, ubuntu 20.4.
 Tested (and optimized) mainly on a workstation with 4 Nvidia A5000
-GPUs and another computer with a Nvidia 2080ti GPU.
+GPUs and another computer with a Nvidia 2080ti GPU (cuda 11.0).
 
 ## Usage 
 
