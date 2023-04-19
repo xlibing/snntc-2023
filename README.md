@@ -65,4 +65,6 @@ Run
 to get the four c++ ops modules: snnfc_ops.so, snnfcgrad_ops.so,
 snncv_ops.so, snncvgrad_ops.so.
 
-Last updated: April 16, 2023, by Xiaohua Li
+---
+
+*Last updated: April 16, 2023, by Xiaohua Li*
