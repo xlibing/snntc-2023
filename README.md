@@ -35,17 +35,17 @@ GPUs and another computer with a Nvidia 2080ti GPU.
 
 Use
 
+     import SNN_TC_Modules as SNN 
+     
+or
+
      from SNN_TC_Modules import SNN_conv, SNN_dense
      
-or just
-
-     import SNN_TC_Modules as SNN
-     
 in your python code, and use the SNN modules in the same way as CNN.
-See snntc-mnist.py for usage examples.
+See snntc-mnist.py, snntc-cifar10.py, and snntc-imagenet.py for usage examples.
 
 The file "SNN_TC_Modules.py" can be copied to your project folder.
-There is no need to move any of the rest files. Instead, just change
+There is no need to move any of the rest files, but you need to change
 "C_MODULE_ROOT = './'" to the correct directory where the 4 c++ ops
 modules *.so are in.
 
