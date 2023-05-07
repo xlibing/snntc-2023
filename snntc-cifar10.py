@@ -1,43 +1,3 @@
-##### same as trainsnn1.py, but use snntc/SNN_TC_Modules.py
-
-# compare: https://github.com/geifmany/cifar10-vgg, ACC 93.56, or https://github.com/SeHwanJoo/cifar10-vgg16, ACC 93.15
-
-# batch 128, lr .001cos, w 0.1:  0.1763/0.1761
-# batch 128, lr .001cos, w 0.01: .5855/.5851
-# batch 128, lr .001cos, w 0.001: .3494/.3578, .6768/.6524
-# batch 128, lr .001cos, w 1/insize: .5929/.5831, 0.4378/.4469, .5170/.5146
-# batch 128, lr .001cos, w 10/size: .7016/.6761, 0.1/0.1, 0.791/.727, 0.7/0.6672, 0.7205/0.6868, .7878/.9599 (copy3)
-    # v1: 14 hrs
-    # v2 (switch x/y): 20 hrs
-    # copy3 (sgemm): 13 hrs, 15 hrs
-# batch 128, lr .001cos, w 20/size, bias, .9104/.81, .9212/.8096
-# batch 128, lr .001cos, w 15/size, bias, .9291/.8265, .9304/.8145
-#        32, .7050/.7118, .8347/.7715, 18 hrs,
-#       256, .1/.1, .6836/.6708, 14 hrs
-#       scale 3: .2/.2
-# batch 128, lr .001cos, w 10/size, bias, .9530/.8329, .8194/.7489, .9347/.8184
-# batch 128, lr .001cos, w 5/size, bias, .7368/.7158, .8084/.744
-# batch 128, lr .001cos, w 1/size, bias, .7419/.6969, .5/.5,
-# batch 128, lr .001cos, w 100/size, bias, .5916/.5795, .4989/.474
-# batch 128, lr .001cos, w 50/size, bias, .7216/.6781, .6922/.6621
-
-# batch 128, lr .001cos, w 100/size: .5838/.5828, .4164/.4169, .5070/.5182, .4544/.4539
-
-# batch 128, lr .01cos, w 10/size: .1/.1, .16/.16
-
-# batch 128, lr .001cos, w 10/size uniform, .1/.1
-
-# TrainSNNCifar10L.py: biasvolt=true, 128, w 20/size, .9936/.7728, 18 hrs(v1, 250epoch),  .9828/.7802, .9901/.7495
-
-# true VGG16: batch 128, lr .001cos, w 15/size, .91/.81, 12 hrs/200epoch,
-# with -input only: .3220/.33754, 13 hrs,
-# with max-input: .7737/.7454, .1/.1,
-# with (max-input)/(max-min): .9458/.8452, .9242/.8375
-# init_par=1: .8598/.7733
-# lr = .01: .5104/.5177
-# lr (1e-3 -> 1e-5): .9374/.8402, .9416/.8388,
-# lr (qe-3 -> 1e-4): .9436/.843, .9487/.8425
-
 import argparse
 import numpy as np
 import tensorflow as tf
@@ -139,8 +99,8 @@ class MyModel(tf.keras.Model):
         
         layerout11 = SNN.SNN_conv(kernel_sizes=3, in_channel=512, out_channel=512, strides=1, biasvolt=BIAS)(maxpool4)
         layerout12 = SNN.SNN_conv(kernel_sizes=3, in_channel=512, out_channel=512, strides=1, biasvolt=BIAS)(layerout11)
-        layerout13 = SNN.SNN_conv(kernel_sizes=3, in_channel=512, out_channel=512, strides=1, biasvolt=BIAS)(layerout12)  # (2, 2, 1024)
-        maxpool5 = SNN.SNN_maxpool2d(kernel_sizes=(2, 2), strides=(2, 2), name='maxpool5')(layerout13)  # (1, 1, 1024)
+        layerout13 = SNN.SNN_conv(kernel_sizes=3, in_channel=512, out_channel=512, strides=1, biasvolt=BIAS)(layerout12)  # (2, 2, 512)
+        maxpool5 = SNN.SNN_maxpool2d(kernel_sizes=(2, 2), strides=(2, 2), name='maxpool5')(layerout13)  # (1, 1, 512)
         
         layerout14 = SNN.SNN_dense(in_size=512, out_size=512, biasvolt=BIAS)(tf.reshape(maxpool5, [tf.shape(x)[0], -1]))
         layerout15 = SNN.SNN_dense(in_size=512, out_size=10, biasvolt=BIAS)(layerout14)
@@ -182,7 +142,7 @@ def CheckTensorDim(model, print_all=False):
     print('Maximum Dimension (Batch, Tensor elements): (', str(maxd[0]), ', ', str(maxd[1]),
           ') -> 2**(', str(np.log2(maxd[0])), ', ', str(np.log2(maxd[1])), ')')
 #CheckTensorDim(my_model, print_all=True)
-# my_model.summary()
+my_model.summary()
 
 trainableParams = np.sum([np.prod(v.get_shape()) for v in my_model.trainable_weights]).astype(int)
 nonTrainableParams = np.sum([np.prod(v.get_shape()) for v in my_model.non_trainable_weights]).astype(int)
@@ -193,7 +153,7 @@ print("{} layers, {:,} parameters ({:,} trainable, {:,} nontrainable)".format(
 
 # Training setup
 decay_steps = x_train.shape[0] // BATCH_SIZE * EPOCHS
-lr_schedule = tf.keras.optimizers.schedules.CosineDecay(LEARNING_RATE, decay_steps, alpha=1)
+lr_schedule = tf.keras.optimizers.schedules.CosineDecay(LEARNING_RATE, decay_steps)
 # opt = tf.keras.optimizers.SGD(learning_rate=lr_schedule, momentum=0.9)
 opt = tf.keras.optimizers.Adam(learning_rate=lr_schedule)
 
